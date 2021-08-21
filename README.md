@@ -2,22 +2,25 @@
 
 Summarize disk usage of the files with a given prefix on AWS S3. This is similar to doing `du -h` on a Linux machine.
 
-Usage: `python s3du.py [OPTIONS] --bucket <s3-bucket-name>`
+Usage: s3du.py [-h] [-b BUCKET] [--access-key ACCESS_KEY]
+               [--secret-key SECRET_KEY] [-p PREFIX] [-md MAX_DEPTH] [-hr]
 
 Mandatory arguments:
 ```
--b | --bucket VALUE         Name of the S3 bucket
+  -b  | --bucket VALUE             Name of the S3 bucket
 ```
 
 Optional arguments:
 ```
-     --access-key VALUE     AWS access key ID
-     --secret-key VALUE     AWS secret access key
--p | --prefix VALUE         Path prefix to filter results.
-                            Analogous to root directory in file storage.
--m | --max-depth VALUE      Maximum number of directories to loop through
-                            under the root directory. Default is 3.
--h | --human-readable       Print size in human-readable format
+  -h  | --help                     Show this help message and exit
+  -b  | --bucket BUCKET            Name of the S3 bucket
+        --access-key ACCESS_KEY    AWS access key ID
+        --secret-key SECRET_KEY    AWS secret access key
+  -p  | --prefix PREFIX            Path prefix to filter results. Analogous to root
+                                   directory in file storage.
+  -md | --max-depth MAX_DEPTH      Maximum number of directories to loop through under
+                                   the root directory.
+  -hr | --human-readable           Print size in human-readable format
 ```
 
 If arguments `access_key` and `secret_key` are not passed, values are fetched from environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
